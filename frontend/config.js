@@ -6,7 +6,8 @@
  *     Example: "https://ejra-smiles-production.up.railway.app/api"
  *     (no trailing slash; keep "/api" at the end)
  */
-const RAILWAY_API = "https://YOUR-RAILWAY-DOMAIN.up.railway.app/api";   // <-- EDIT THIS
+const RAILWAY_API =
+  "https://ejra-smiles-wellness-production.up.railway.app/api";   // <-- EDIT THIS
 
 const CONFIG = {
   API_BASE:
