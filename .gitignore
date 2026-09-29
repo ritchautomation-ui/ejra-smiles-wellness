@@ -1,0 +1,11 @@
+# compiled Java
+out/
+*.class
+# editors / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+# Vercel
+.vercel
