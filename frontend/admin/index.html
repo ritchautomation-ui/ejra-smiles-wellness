@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lead Catcher | EJRA Smiles &amp; Wellness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="logo"><span class="mark">EJ</span><div><strong>Lead Catcher</strong><small>EJRA Smiles &amp; Wellness</small></div></div>
+    <nav id="nav">
+      <button data-page="dashboard" class="active">Dashboard</button>
+      <button data-page="leads">Leads</button>
+      <button data-page="add">Add Lead</button>
+      <button data-page="search">Search Lead</button>
+      <button data-page="appointments">Appointments</button>
+      <button data-page="bst">BST Traversal</button>
+    </nav>
+    <a class="site-link" href="/">View public website</a>
+  </aside>
+
+  <main class="main">
+    <header class="head">
+      <div><h1 id="title">Dashboard</h1><p id="subtitle">Overview of every lead captured by the website and clinic staff.</p></div>
+      <div class="conn" id="conn" title="Backend connection">Connecting…</div>
+    </header>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- ===== DASHBOARD ===== -->
+    <section id="page-dashboard" class="page">
+      <div class="stats" id="stats"></div>
+      <div class="card">
+        <div class="card-h"><h2>Recent appointment requests</h2><button class="link" data-go="leads">View all</button></div>
+        <div class="tablewrap"><table><thead><tr><th>Patient</th><th>Service</th><th>Preferred date</th><th>Status</th></tr></thead><tbody id="recentBody"></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- ===== LEADS (VIEW + DELETE) ===== -->
+    <section id="page-leads" class="page" hidden>
+      <div class="card">
+        <div class="card-h"><h2>All leads <span class="count" id="leadCount"></span></h2>
+          <button class="btn ghost" id="refreshBtn">Refresh</button></div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>ID</th><th>Patient</th><th>Contact</th><th>Service</th><th>Preferred</th><th>Source</th><th>Status</th><th></th></tr></thead>
+          <tbody id="leadsBody"></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- ===== ADD LEAD ===== -->
+    <section id="page-add" class="page" hidden>
+      <form class="card form" id="addForm" novalidate>
+        <div class="grid">
+          <label>Lead ID *<input id="f-id" inputmode="numeric" placeholder="e.g. 1006"></label>
+          <label>Patient name *<input id="f-name" placeholder="Full name"></label>
+          <label>Email *<input id="f-email" type="email" placeholder="name@email.com"></label>
+          <label>Phone *<input id="f-phone" placeholder="09171234567"></label>
+          <label>Service *
+            <select id="f-service"><option value="">Choose a service</option>
+              <option>Dental Cleaning</option><option>Dental Checkup</option><option>Teeth Whitening</option>
+              <option>Root Canal Treatment</option><option>Orthodontic Consultation</option><option>Tooth Extraction</option></select></label>
+          <label>Preferred date *<input id="f-date" type="date"></label>
+          <label>Preferred time *
+            <select id="f-time"><option value="">Choose a time</option>
+              <option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>1:00 PM</option>
+              <option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></label>
+          <label>Source
+            <select id="f-source"><option>Website Form</option><option>Facebook</option><option>Instagram</option><option>Walk-in</option></select></label>
+          <label>Status
+            <select id="f-status"><option>New</option><option>Contacted</option><option>Appointment Requested</option><option>Converted</option></select></label>
+          <label class="wide">Notes<textarea id="f-notes" rows="2" placeholder="Optional"></textarea></label>
+        </div>
+        <div class="actions"><button class="btn" type="submit">Save lead</button><button class="btn ghost" type="reset">Clear form</button></div>
+        <p class="hint">Saving inserts the lead into the Java <b>Lead[]</b> array and the <b>Binary Search Tree</b> (keyed by Lead ID).</p>
+      </form>
+    </section>
+
+    <!-- ===== SEARCH LEAD (BST) ===== -->
+    <section id="page-search" class="page" hidden>
+      <form class="card form inline" id="searchForm" novalidate>
+        <label>Lead ID<input id="s-id" inputmode="numeric" placeholder="e.g. 1003"></label>
+        <button class="btn" type="submit">Search with BST</button>
+      </form>
+      <div id="searchResult"></div>
+    </section>
+
+    <!-- ===== APPOINTMENTS ===== -->
+    <section id="page-appointments" class="page" hidden>
+      <div class="card"><div class="tablewrap"><table>
+        <thead><tr><th>Date</th><th>Time</th><th>Patient</th><th>Service</th><th>Notes</th><th>Status</th></tr></thead>
+        <tbody id="apptBody"></tbody></table></div></div>
+    </section>
+
+    <!-- ===== BST TRAVERSAL ===== -->
+    <section id="page-bst" class="page" hidden>
+      <div class="card">
+        <div class="card-h"><h2>Run a traversal</h2><span class="count" id="bstInfo"></span></div>
+        <div class="actions">
+          <button class="btn" data-trav="inorder">Inorder</button>
+          <button class="btn" data-trav="preorder">Preorder</button>
+          <button class="btn" data-trav="postorder">Postorder</button>
+        </div>
+        <div id="travResult" class="trav-result" hidden>
+          <h3 id="travName"></h3>
+          <p class="rule" id="travRule"></p>
+          <div class="chips" id="travChips"></div>
+          <p class="why" id="travWhy"></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h2>Tree diagram</h2><button class="btn ghost" id="treeBtn">Refresh tree</button></div>
+        <p class="hint">Smaller Lead IDs go to the left, larger to the right. The root is the first lead inserted.</p>
+        <div class="tree" id="tree"></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="/config.js"></script>
+<script src="/admin/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EJRA Smiles &amp; Wellness | Dental Clinic</title>
+  <meta name="description" content="Book a dental appointment at EJRA Smiles & Wellness. Cleaning, whitening, root canal, braces consultation and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/"><span class="mark">EJ</span> EJRA Smiles &amp; Wellness</a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#book">Book a visit</a>
+      <a href="/admin/" class="staff">Staff login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Dental care that starts with an unhurried hello.</h1>
+        <p>Cleanings, whitening, root canals and braces consultations, with a dentist who explains each step before doing it.</p>
+        <a class="btn" href="#book">Request an appointment</a>
+        <p class="hours">Mon–Sat, 9:00 AM – 6:00 PM</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 200 220" role="img">
+          <path d="M100 18c-22-14-64-8-72 32-6 30 8 52 14 82 5 26 8 60 24 60 14 0 10-40 34-40s20 40 34 40c16 0 19-34 24-60 6-30 20-52 14-82-8-40-50-46-72-32z" fill="#fff" stroke="#0e7c7b" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M64 70c10 8 22 10 36 4" fill="none" stroke="#bfe5dd" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <h2>What we can help with</h2>
+      <ul>
+        <li><strong>Dental Cleaning</strong><span>Plaque and stain removal, polish.</span></li>
+        <li><strong>Dental Checkup</strong><span>Exam and X-ray review.</span></li>
+        <li><strong>Teeth Whitening</strong><span>In-chair, one visit.</span></li>
+        <li><strong>Root Canal Treatment</strong><span>Relief for lasting tooth pain.</span></li>
+        <li><strong>Orthodontic Consultation</strong><span>Braces and aligner options.</span></li>
+        <li><strong>Tooth Extraction</strong><span>Including wisdom teeth.</span></li>
+      </ul>
+    </section>
+
+    <section id="book" class="book">
+      <div class="book-intro">
+        <h2>Request an appointment</h2>
+        <p>Tell us what you need and when you would like to come in. Our staff will contact you to confirm the slot.</p>
+      </div>
+      <form id="bookForm" novalidate>
+        <label>Full name
+          <input id="name" type="text" autocomplete="name" placeholder="Juan Dela Cruz">
+        </label>
+        <div class="row">
+          <label>Email
+            <input id="email" type="email" autocomplete="email" placeholder="juan@email.com">
+          </label>
+          <label>Mobile number
+            <input id="phone" type="tel" autocomplete="tel" placeholder="09171234567">
+          </label>
+        </div>
+        <label>Service
+          <select id="service">
+            <option value="">Choose a service</option>
+            <option>Dental Cleaning</option>
+            <option>Dental Checkup</option>
+            <option>Teeth Whitening</option>
+            <option>Root Canal Treatment</option>
+            <option>Orthodontic Consultation</option>
+            <option>Tooth Extraction</option>
+          </select>
+        </label>
+        <div class="row">
+          <label>Preferred date
+            <input id="date" type="date">
+          </label>
+          <label>Preferred time
+            <select id="time">
+              <option value="">Choose a time</option>
+              <option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option>
+              <option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option>
+              <option>4:00 PM</option><option>5:00 PM</option>
+            </select>
+          </label>
+        </div>
+        <label>Notes (optional)
+          <textarea id="notes" rows="3" placeholder="Anything we should know?"></textarea>
+        </label>
+        <button class="btn" id="submitBtn" type="submit">Send request</button>
+        <p id="msg" class="msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 EJRA Smiles &amp; Wellness. School project: no real appointments are made.</p>
+  </footer>
+
+  <script src="/config.js"></script>
+  <script src="/public/script.js"></script>
+</body>
+</html>
